@@ -1,0 +1,42 @@
+name: tabaqui
+args:
+  - verbose:
+      short: v
+      multiple: true
+      required: false
+      help: set verbosity
+  - backend:
+      short: b
+      multiple: false
+      required: true
+      takes_value: true
+      value_name: BACKEND-URI
+      help: backend root-uri
+  - bind-addr:
+      short: a
+      multiple: false
+      required: false
+      takes_value: true
+      value_name: BIND-ADDR
+      help: address to bind
+  - bind-port:
+      short: p
+      multiple: false
+      required: false
+      takes_value: true
+      value_name: BIND-PORT
+      help: port to bind
+  - storage-size:
+      short: s
+      multiple: false
+      required: false
+      takes_value: true
+      value_name: STORAGE-SIZE
+      help: storage size (entries)
+#   - mgmt-path:
+#       short: m
+#       required: true
+#       multiple: false
+#       takes_value: true
+#       value_name: MGMT_PATH
+#       help: management API path

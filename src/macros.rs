@@ -14,36 +14,36 @@ macro_rules! field_get_ref_mut {
     }
 }
 
-// macro_rules! field_get_opt_ref {
-//     ($field: ident, $func: ident, $type: ty) => {
-//         pub fn $func(&self) -> Option<&$type> {
-//             self.$field.as_ref()
-//         }
-//     };
-// }
+macro_rules! field_get_opt_ref {
+    ($field: ident, $func: ident, $type: ty) => {
+        pub fn $func(&self) -> Option<&$type> {
+            self.$field.as_ref()
+        }
+    };
+}
 
-// macro_rules! field_update_opt_none {
-//    ($field: ident, $func: ident) => {
-//        pub fn $func(self) -> Self {
-//            let $field = None;
-//            Self {
-//                $field,
-//                .. self
-//            }
-//        }
-//    }
-// }
+macro_rules! field_update_opt_none {
+   ($field: ident, $func: ident) => {
+       pub fn $func(self) -> Self {
+           let $field = None;
+           Self {
+               $field,
+               .. self
+           }
+       }
+   }
+}
 
-// macro_rules! field_update_opt_some {
-//    ($field: ident, $func: ident, $type: ty) => {
-//        pub fn $func(self, $field: Option<$type>) -> Self {
-//         Self {
-//             $field,
-//             .. self
-//         }
-//     }
-//    }
-// }
+macro_rules! field_update_opt_some {
+   ($field: ident, $func: ident, $type: ty) => {
+       pub fn $func(self, $field: Option<$type>) -> Self {
+        Self {
+            $field,
+            .. self
+        }
+    }
+   }
+}
 
 macro_rules! field_get_copy {
     ($field: ident, $func: ident, $type: ty) => {
