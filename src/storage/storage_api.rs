@@ -22,9 +22,19 @@ impl StorageApi {
         Self { max_items, inner }
     }
 
-    pub fn get_data(&self) -> JsValue {
+    pub fn get_data(&self) -> impl serde::Serialize {
         let inner = self.inner.read().expect("Failed to r-lock the state");
         serde_json::to_value(&*inner).expect("Failed to serialize the state")
+    }
+
+    pub fn ids(&self) -> Vec<u64> {
+        let inner = self.inner.read().expect("Failed to r-lock the state");
+        inner.ids.iter().cloned().collect()
+    }
+
+    pub fn get_by_id(&self, id: u64) -> (Option<data::Rq>, Option<data::Rs>) {
+        let inner = self.inner.read().expect("Failed to r-lock the state");
+        (inner.rqs.get(&id).cloned(), inner.rss.get(&id).cloned())
     }
 
     pub fn store_request(&self, rq: &data::Rq) -> u64 {
